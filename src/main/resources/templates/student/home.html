@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <h2>L-Area Student</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> My Profile</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar glass">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="topbar-user">
+                    <div class="user-dropdown">
+                        <span class="user-name" th:text="${firstName}">Student</span>
+                        <i class="fas fa-chevron-down"></i>
+                        <div class="dropdown-menu">
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Area -->
+            <div class="content-area">
+                <h2 class="page-title">Welcome back, <span th:text="${firstName}">Student</span>!</h2>
+
+                <div class="dashboard-cards">
+                    <div class="card glass">
+                        <h3>Enrolled Courses</h3>
+                        <p class="card-value">3</p>
+                    </div>
+                    <div class="card glass">
+                        <h3>Completed</h3>
+                        <p class="card-value">1</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
+
+
+
+
+1. In signin page fix the logo alinment center, hight, & width.
+2. modify the role-selection in circle shape or any unique design.
+3. Remove the Dashboard sub-menu only dashboard.
+4. If i click the Enquiry -> All Enquiries that shows one search bar with refersh button below all enquiry detailes will
+show from DB.
+5. Into the Add ne

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="signup-page">
+    <div class="signin-wrapper">
+        <div class="brand-logo-container">
+            <img th:src="@{/logo/logo.jpg}" alt="v4career Logo" class="brand-logo">
+        </div>
+
+        <div class="signin-form-box">
+            <h4 style="padding-bottom: 20px;">Register Now</h4>
+            <div th:if="${error}" class="alert alert-error" th:text="${error}">
+            </div>
+            <form th:action="@{/signup}" th:object="${user}" method="post" id="signupForm">
+                <div class="input-box">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" id="firstName" th:field="*{firstName}" required placeholder="First Name" />
+                </div>
+                <div class="input-box">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" id="lastName" th:field="*{lastName}" required placeholder="Last Name" />
+                </div>
+                <div class="input-box">
+                    <i class="fa-regular fa-user"></i>
+                    <select id="role" th:field="*{role}" required placeholder="Role">
+                        <option value="">Select Role</option>
+                        <option value="employee">Employee</option>
+                        <option value="student">Student</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-building"></i>
+                    <select id="branch" th:field="*{branch}" required>
+                        <option value="">Select Branch</option>
+                        <option value="CHENNAI">Chennai</option>
+                        <option value="MADURAI">Madurai</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="emailId" th:field="*{emailId}" required placeholder="Email ID" />
+                    <button type="button" id="getOtpBtn" class="btn btn-secondary btn-inline">Get OTP</button>
+                </div>
+
+                <div class="input-box" id="otpGroup" style="display: none;">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <input type="text" id="otp" name="otpInput" placeholder="Enter OTP" />
+                    <button type="button" id="verifyOtpBtn" class="btn btn-secondary btn-inline">Verify</button>
+                </div>
+                <input type="hidden" id="verified" name="verified" value="false" />
+                <span id="otpStatus" class="status-msg"
+                    style="display: block; text-align: center; margin-bottom: 0.75rem; margin-top: -0.5rem;"></span>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <input type="text" id="phoneNo" th:field="*{phoneNo}" required placeholder="Phone Number" />
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" th:field="*{password}" required placeholder="Password" />
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-user-lock"></i>
+                    <input type="password" id="reEnterPassword" th:field="*{reEnterPassword}" required
+                        placeholder="Re-enter Password" />
+                </div>
+
+                <button type="submit" class="btn-signin" id="signupBtn" disabled>SIGN UP</button>
+
+                <div class="signin-footer-signup" style="margin-top: 0.85rem;">
+                    <p>Already have an account? <a th:href="@{/signin}">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script th:src="@{/js/auth.js}"></script>
+</body>
+
+</html>
